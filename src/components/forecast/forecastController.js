@@ -10,13 +10,37 @@ App.controller('ForecastController', function($scope, $routeParams) {
 
         getForecast(result.id).then((result) => {
             console.log('Forecast: ', result);
+
+            // prepare result list for view(s)
+            const filteredList = [];
+            for(let i=0; i<result.list.length; i++){
+                let item = result.list[i];
+
+                // remove onneeded information for this context
+                item.dt_txt = item.dt_txt.substring(5).substring(0,11).replace(' ', ' at ')
+
+                // Kelvin to Celcius
+                item.main.temp = Math.round(item.main.temp - 273.15)
+
+                // round wind speed
+                item.wind.speed = Math.round(item.wind.speed)
+
+                filteredList.push(item);
+
+                // return 10 entries max.. otherwise it would be to crowded in view
+                if(i > 10){
+                    break;
+                }
+            }
+
             $scope.$apply(() => {
                 $scope.forecast = {
-                    weatherObjects: result.list
+                    weatherObjects: filteredList
                 }
                 $scope.stateClass = 'animateIn'
             })
 
+            // Prepare google chart
             const chartSettings = {
                 container: document.querySelector('.forecast__chart'),
                 columns: [
@@ -39,8 +63,8 @@ App.controller('ForecastController', function($scope, $routeParams) {
 
             }
 
-            for(let i=0; i<result.list.length; i++){
-                chartSettings.rows.push([result.list[i].dt_txt, Math.round(result.list[i].main.temp-273.15)])
+            for(let i=0; i<filteredList.length; i++){
+                chartSettings.rows.push([filteredList[i].dt_txt, filteredList[i].main.temp])
             }
 
             drawLineChart(chartSettings);

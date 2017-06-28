@@ -11,7 +11,7 @@
             <thead>
                 <tr>
                     <th></th>
-                    <th ng-repeat="weatherObject in forecast.weatherObjects">{{weatherObject.dt_txt}}</th>
+                    <th ng-repeat="weatherObject in forecast.weatherObjects">{{weatherObject.dt_txt.replace(' at ', ' ')}}</th>
                 </tr>
             </thead>
             <tbody>
@@ -23,7 +23,7 @@
             </tr>
             <tr>
                 <th><span>Temperature</span></th>
-                <td ng-repeat="weatherObject in forecast.weatherObjects">{{ Math.round(weatherObject.main.temp-273.15) }}&#8451;</td>
+                <td ng-repeat="weatherObject in forecast.weatherObjects">{{ weatherObject.main.temp }}&#8451;</td>
             </tr>
             <tr>
                 <th><span>Clouds</span></th>
@@ -39,7 +39,7 @@
             </tr>
             <tr>
                 <th><span>Wind speed</span></th>
-                <td ng-repeat="weatherObject in forecast.weatherObjects">{{ Math.round(weatherObject.wind.speed) }}m/s</td>
+                <td ng-repeat="weatherObject in forecast.weatherObjects">{{ weatherObject.wind.speed }}m/s</td>
             </tr>
             </tbody>
         </table>

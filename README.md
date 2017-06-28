@@ -15,6 +15,7 @@ To run the application:
 ```
 npm start
 ```
+The server runs on http://localhost:8080
 
 ### Prerequisites
 
