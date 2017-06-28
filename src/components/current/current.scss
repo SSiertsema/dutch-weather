@@ -1,0 +1,42 @@
+.current {
+    @extend #WHITE-BOX;
+
+    h2 {
+        font-size: 18px;
+        color: #333333;
+        margin-bottom: 8px;
+    }
+
+    &__summary {
+        text-transform: uppercase;
+    }
+
+    &__story {
+        p {
+            margin: 0;
+            + p {
+                margin-top: 0.5em;
+            }
+            + h2 {
+                margin-top: 24px
+            }
+        }
+    }
+
+    &__specs {
+        margin-top: 24px;
+        th {
+            text-align: right;
+            &:after {
+                content: ':';
+                margin-left: 3px;
+                margin-right: 8px;
+            }
+
+        }
+    }
+
+    .button {
+        margin-top: $vRythm;
+    }
+}

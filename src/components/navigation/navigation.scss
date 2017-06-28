@@ -1,0 +1,32 @@
+.navigation {
+    @extend #WHITE-BOX;
+
+    &__title {
+        margin: 0;
+    }
+
+    &__linkCollection {
+        list-style-type: none;
+        margin: 20px 0 0 0;
+        padding: 0;
+        > li {
+            display: inline-block;
+            margin-bottom: 3px;
+            margin-right: 3px;
+        }
+
+        @include fromTablet {
+            > li {
+                display: block;
+                margin-right: 0;
+            }
+        }
+    }
+
+    &__link.button {
+        text-transform: capitalize;
+        @include fromTablet {
+            display: block;
+        }
+    }
+}

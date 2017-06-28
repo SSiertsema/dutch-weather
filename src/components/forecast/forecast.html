@@ -1,0 +1,49 @@
+<section ng-controller="ForecastController" class="forecast {{ stateClass }}">
+
+    <header>
+        <h1>Forecast of {{ city.name }}</h1>
+    </header>
+
+    <div class="forecast__chart"></div>
+
+    <div class="forecast__specs">
+        <table>
+            <thead>
+                <tr>
+                    <th></th>
+                    <th ng-repeat="weatherObject in forecast.weatherObjects">{{weatherObject.dt_txt}}</th>
+                </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <th><span>Weather</span></th>
+                <td ng-repeat="weatherObject in forecast.weatherObjects">
+                    <img src="http://openweathermap.org/img/w/{{weatherObject.weather[0].icon}}.png"/>
+                </td>
+            </tr>
+            <tr>
+                <th><span>Temperature</span></th>
+                <td ng-repeat="weatherObject in forecast.weatherObjects">{{ Math.round(weatherObject.main.temp-273.15) }}&#8451;</td>
+            </tr>
+            <tr>
+                <th><span>Clouds</span></th>
+                <td ng-repeat="weatherObject in forecast.weatherObjects">{{ weatherObject.clouds.all }}%</td>
+            </tr>
+            <tr>
+                <th><span>Wind direction</span></th>
+                <td ng-repeat="weatherObject in forecast.weatherObjects">
+                    <div class="forecast__arrow" style="transform: rotate({{weatherObject.wind.deg}}deg)">
+                        <span>&#8593;</span>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th><span>Wind speed</span></th>
+                <td ng-repeat="weatherObject in forecast.weatherObjects">{{ Math.round(weatherObject.wind.speed) }}m/s</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <a href="/{{ city.name.toLowerCase() }}" class="button">Show current weather</a>
+</section>

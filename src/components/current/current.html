@@ -1,0 +1,50 @@
+<section ng-controller="CurrentController" class="current {{ stateClass }}">
+    <header>
+        <h1>Current weather {{ city.name }}<br/><span class="current__summary">{{ summary }}</span></h1>
+    </header>
+    <div>
+
+        <div class="current__story" ng-include="storyTemplate"></div>
+
+        <div class="current__specs">
+            <h2>Weather specs</h2>
+            <table>
+                <tbody>
+                <tr>
+                    <th>Temperature</th>
+                    <td>{{ current.temperature }}&#8451;</td>
+                </tr>
+                <tr>
+                    <th>Clouds</th>
+                    <td>{{ current.clouds }}%</td>
+                </tr>
+                <tr>
+                    <th>Wind direction</th>
+                    <td>{{ current.windDirection }}</td>
+                </tr>
+                <tr>
+                    <th>Wind speed</th>
+                    <td>{{ current.windSpeed }}</td>
+                </tr>
+                <tr>
+                    <th>Humidity</th>
+                    <td>{{ current.humidity }}</td>
+                </tr>
+                <tr>
+                    <th>Pressure</th>
+                    <td>{{ current.pressure }}</td>
+                </tr>
+                <tr>
+                    <th>Sunrise</th>
+                    <td>{{ current.sunrise }}</td>
+                </tr>
+                <tr>
+                    <th>Sunset</th>
+                    <td>{{ current.sunset }}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <a href="/{{ city.name.toLowerCase() }}/forecast" class="button">Show Forecast</a>
+    </div>
+</section>

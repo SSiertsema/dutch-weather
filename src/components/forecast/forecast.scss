@@ -1,0 +1,51 @@
+.forecast {
+    @extend #WHITE-BOX;
+
+    &__specs {
+        width: 100%;
+        padding-bottom: 20px;
+        overflow-x: auto;
+        th {
+            text-align: right;
+            padding: 5px 10px;
+            background-color: rgba(0,0,0,0.1);
+            font-weight: normal;
+            > * {
+                display: block;
+                width: 120px;
+            }
+        }
+        td {
+            padding: 5px 10px;
+            height: 30px;
+        }
+    }
+
+    &__chart {
+
+    }
+
+    &__specs {
+        margin-top: 20px;
+    }
+
+    &__arrow {
+        width: 40px;
+        height: 40px;
+        text-align: center;
+        font-size: 30px;
+        > span {
+            display: inline-block;
+            padding: 0;
+            position: relative;
+            top: -4px;
+            line-height: 1;
+        }
+    }
+
+    table {}
+
+    .button {
+        margin-top: $vRythm;
+    }
+}
